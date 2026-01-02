@@ -1,0 +1,11 @@
+﻿# Main configuration
+ENV=dev
+PROJECT_NAME=HeirsPrivPark
+API_PREFIX=/api
+DOCS_URL=/docs
+
+# PostgreSQL database (admin user and privpark database)
+DATABASE_URL=postgresql+psycopg://postgres:admin123@localhost:5432/privpark
+
+# CORS (allow all origins for dev)
+CORS_ORIGINS=*
