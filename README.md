@@ -1,14 +1,14 @@
-# Heirs-PrivPark 🅿️
+# PHD 
 
 **Mobile application for renting private parking spaces**
 
 A platform connecting parking space owners with users looking for safe and affordable parking.
 
-## 🎯 Mission
+##  Mission
 
 To provide a convenient, affordable and secure parking solution by connecting private parking space owners with users looking for parking.
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Frontend (Mobile)
 
@@ -22,54 +22,59 @@ To provide a convenient, affordable and secure parking solution by connecting pr
 - **Framework**: FastAPI (Python)
 - **Database**: PostgreSQL
 - **Authentication**: Firebase Admin SDK
-- **Storage**: AWS S3 (photos)
+- **Storage**: AWS S3 
 - **Notifications**: Firebase Cloud Messaging
 
-## 🚀 MVP Features
+##  Phase 1 – MVP (Minimum Viable Product)
 
-### ✅ Phase 1 - Authentication (COMPLETED)
+###  1 - Authentication 
 
-- [x] Registration/Login (Firebase Auth)
-- [x] User profiles
-- [x] Token verification
-- [x] Role management (user/admin)
+-  Registration/Login (Firebase Auth)
+-  User profiles
+-  Token verification
+-  Role management (user/admin)
 
-### 🔄 Phase 2 - Car park management (IN PROGRESS)
+###  2 - Car park management 
 
-- [ ] Adding/modifying spaces
-- [ ] Photos and descriptions
-- [ ] Availability calendar
-- [ ] Geolocation
+-  Adding/modifying spaces
+-  Photos and descriptions
+-  Availability calendar
+-  Geolocation
 
-### 📋 Phase 3 - Search and booking
+### 3 - Search and booking
 
-- [ ] Search by location
-- [ ] Filters (price, date, availability)
-- [ ] Real-time booking
-- [ ] GPS navigation
+-  Search by location
+-  Filters (price, date, availability)
+-  Real-time booking
+-  GPS navigation
 
-### 💳 Phase 4 - Payments
+###  4 - Payments
 
-- [ ] Stripe integration
-- [ ] Secure payments
-- [ ] Digital receipts
-- [ ] Transaction history
+-  Stripe integration
+-  Secure payments
+-  Digital receipts
+-  Transaction history
 
-### 🔔 Phase 5 - Notifications
+###  5 - Notifications
 
-- [ ] Booking confirmations
-- [ ] Payment reminders
-- [ ] Push notifications
-- [ ] Dispute management
+-  Booking confirmations
+-  Payment reminders
+-  Push notifications
+-  Dispute management
 
-### 👨‍💼 Phase 6 - Administration
+###  6 - Administration
 
-- [ ] Admin panel
-- [ ] User management
-- [ ] Listing moderation
-- [ ] Customer support
+-  Admin panel
+-  User management
+-  Listing moderation
+-  Customer support
 
-## 🛠️ Installation & Getting Started
+ ##  7 - Driver Profile & Booking History
+ 
+ - 	Upcoming + past reservations list
+ - 	Ability to rebook same spot
+
+##  Installation & Getting Started
 
 ### Prerequisites
 
@@ -77,6 +82,7 @@ To provide a convenient, affordable and secure parking solution by connecting pr
 - PostgreSQL 14+
 - Node.js 18+
 - Flutter 3.0+
+- Java 17+
 
 ### Backend (FastAPI)
 
@@ -109,7 +115,7 @@ flutter pub get
 flutter run
 ```
 
-## 📡 API Endpoints
+##  API Endpoints
 
 ### Authentication
 
@@ -127,7 +133,7 @@ flutter run
 
 - `GET /health` - API status
 
-## 🧪 Tests
+##  Tests
 
 ```bash
 # Authentication tests
@@ -137,7 +143,7 @@ python backend/app/test/test_auth.py
 python backend/app/test/test_auth.py YOUR_FIREBASE_TOKEN
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 ### Environment variables (backend/.env)
 
@@ -158,7 +164,7 @@ CORS_ORIGINS=*
 3. Download Admin SDK service key
 4. Place in `backend/secrets/`
 
-## 📊 Database
+##  Database
 
 ### User Model
 
