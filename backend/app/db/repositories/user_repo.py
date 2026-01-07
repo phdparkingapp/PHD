@@ -1,3 +1,7 @@
+"""
+User repository for database operations.
+Handles user creation, retrieval, and updates from Firebase claims.
+"""
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 

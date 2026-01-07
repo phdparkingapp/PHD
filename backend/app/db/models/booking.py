@@ -1,3 +1,7 @@
+"""
+Booking and payment database models.
+Represents user bookings for parking spaces and associated payment records.
+"""
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -50,9 +54,9 @@ class Booking(Base):
 
 
 class PaymentStatus(str, enum.Enum):
-    complet = "complet"  # Paiement réussi
-    en_attente = "en_attente"  # Paiement en cours
-    echoue = "echoue"  # Paiement échoué
+    complet = "complet"  # Payment successful
+    en_attente = "en_attente"  # Payment pending
+    echoue = "echoue"  # Payment failed
 
 
 class Payment(Base):
@@ -70,7 +74,7 @@ class Payment(Base):
     status: Mapped[PaymentStatus] = mapped_column(
         Enum(PaymentStatus), default=PaymentStatus.en_attente)
 
-    # Champs optionnels pour Stripe
+    # Optional fields for Stripe
     provider: Mapped[str] = mapped_column(String(32), default="stripe")
     provider_payment_id: Mapped[str | None] = mapped_column(
         String(128), nullable=True)

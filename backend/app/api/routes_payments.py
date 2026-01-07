@@ -1,3 +1,7 @@
+"""
+Payment processing routes.
+Handles Stripe checkout session creation and webhook processing for payment confirmations.
+"""
 from __future__ import annotations
 
 import os

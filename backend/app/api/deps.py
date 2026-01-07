@@ -1,3 +1,7 @@
+"""
+Dependencies for API authentication and authorization.
+Handles Firebase token verification and user authentication.
+"""
 from typing import Annotated
 from fastapi import Depends, HTTPException, status
 from firebase_admin import auth as fb_auth, credentials, initialize_app

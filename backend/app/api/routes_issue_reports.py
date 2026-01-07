@@ -1,3 +1,7 @@
+"""
+Issue report routes.
+Handles creation and updates of issue reports by users.
+"""
 from fastapi import APIRouter, Depends, Header, HTTPException
 from sqlalchemy.orm import Session
 

@@ -1,3 +1,7 @@
+"""
+Notification management routes.
+Handles notification retrieval, marking as read, statistics, and deletion for authenticated users.
+"""
 from __future__ import annotations
 
 from typing import List

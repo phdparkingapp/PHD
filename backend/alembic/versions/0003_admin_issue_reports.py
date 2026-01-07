@@ -1,3 +1,10 @@
+"""
+Add admin features and issue reports table.
+
+Revision ID: 0003_admin_issue_reports
+Revises: 0002_add_bookings_payments
+Create Date: 2025-09-19 00:00:00.000000
+"""
 from alembic import op
 import sqlalchemy as sa
 

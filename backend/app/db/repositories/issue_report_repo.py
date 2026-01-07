@@ -1,3 +1,7 @@
+"""
+Issue report repository for database operations.
+Handles issue report creation, retrieval, updates, and admin management.
+"""
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 

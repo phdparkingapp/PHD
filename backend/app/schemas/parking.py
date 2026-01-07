@@ -1,3 +1,7 @@
+"""
+Parking space Pydantic schemas for request/response validation.
+Defines parking space and availability data models for API input and output.
+"""
 from pydantic import BaseModel, Field
 from datetime import datetime
 from typing import List

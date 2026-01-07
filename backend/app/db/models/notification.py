@@ -1,3 +1,7 @@
+"""
+Notification database model.
+Represents user notifications for bookings, payments, and reminders.
+"""
 from __future__ import annotations
 
 from datetime import datetime, timezone

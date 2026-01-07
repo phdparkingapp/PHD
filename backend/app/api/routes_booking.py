@@ -1,3 +1,7 @@
+"""
+Booking management routes.
+Handles booking creation, retrieval, cancellation, and related operations.
+"""
 from __future__ import annotations
 
 from datetime import datetime

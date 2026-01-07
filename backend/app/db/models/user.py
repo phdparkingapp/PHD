@@ -1,3 +1,7 @@
+"""
+User database model.
+Represents application users with Firebase authentication integration.
+"""
 from sqlalchemy import String, DateTime, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 from datetime import datetime, timezone

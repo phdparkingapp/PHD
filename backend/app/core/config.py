@@ -1,3 +1,7 @@
+"""
+Application configuration settings.
+Manages environment variables, database URLs, Firebase credentials, AWS S3, and Stripe configuration.
+"""
 from functools import lru_cache
 from typing import List
 
@@ -32,7 +36,7 @@ class Settings(BaseSettings):
     project_name: str = os.getenv("PROJECT_NAME", "HeirsPrivPark")
     api_prefix: str = os.getenv("API_PREFIX", "/api")
     docs_url: str = os.getenv("DOCS_URL", "/docs")
-    # PostgreSQL par défaut; surcharge possible via .env
+    # PostgreSQL by default; can be overridden via .env
     database_url: str = os.getenv(
         "DATABASE_URL",
         "postgresql+psycopg://postgres:postgres@localhost:5432/privpark",

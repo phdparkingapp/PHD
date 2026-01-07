@@ -1,3 +1,7 @@
+"""
+Notification repository for database operations.
+Handles notification creation, retrieval, marking as read, statistics, and deletion.
+"""
 from __future__ import annotations
 
 from datetime import datetime

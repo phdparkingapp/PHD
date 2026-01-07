@@ -1,3 +1,7 @@
+"""
+Active reminder database model.
+Manages ongoing periodic reminders for active bookings.
+"""
 from __future__ import annotations
 
 from datetime import datetime, timezone

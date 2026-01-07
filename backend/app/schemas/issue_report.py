@@ -1,3 +1,7 @@
+"""
+Issue report Pydantic schemas for request/response validation.
+Defines issue report data models for API input and output.
+"""
 from __future__ import annotations
 
 from datetime import datetime

@@ -1,3 +1,7 @@
+"""
+Notification service for automatic notification creation and management.
+Handles booking confirmations, payment confirmations, reminders, and periodic notifications.
+"""
 from __future__ import annotations
 
 from datetime import datetime, timedelta

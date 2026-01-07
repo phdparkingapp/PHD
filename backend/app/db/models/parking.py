@@ -1,3 +1,7 @@
+"""
+Parking space and availability database models.
+Represents parking listings with availability windows and moderation status.
+"""
 from __future__ import annotations
 
 from sqlalchemy import String, Float, Text, ForeignKey, DateTime, Enum, Boolean

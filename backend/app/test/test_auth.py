@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Script de test pour l'authentification Firebase
+Test script for Firebase authentication.
+Tests authentication endpoints and token verification.
 """
 import requests
 import json
@@ -9,48 +10,48 @@ BASE_URL = "http://127.0.0.1:8000"
 
 
 def test_health():
-    """Test de l'endpoint de santé"""
-    print("🔍 Test de l'endpoint /health...")
+    """Test the health endpoint"""
+    print("🔍 Testing /health endpoint...")
     try:
         response = requests.get(f"{BASE_URL}/health")
         print(f"✅ Status: {response.status_code}")
         print(f"✅ Response: {response.json()}")
         return True
     except Exception as e:
-        print(f"❌ Erreur: {e}")
+        print(f"❌ Error: {e}")
         return False
 
 
 def test_verify_token_invalid():
-    """Test avec un token invalide"""
-    print("\n🔍 Test de /auth/verify-token avec token invalide...")
+    """Test with an invalid token"""
+    print("\n🔍 Testing /auth/verify-token with invalid token...")
     try:
         response = requests.post(
             f"{BASE_URL}/api/auth/verify-token",
             headers={"Authorization": "Bearer invalid_token"}
         )
-        print(f"✅ Status attendu (401): {response.status_code}")
+        print(f"✅ Expected status (401): {response.status_code}")
         return response.status_code == 401
     except Exception as e:
-        print(f"❌ Erreur: {e}")
+        print(f"❌ Error: {e}")
         return False
 
 
 def test_me_endpoint_no_token():
-    """Test /me sans token"""
-    print("\n🔍 Test de /users/me sans token...")
+    """Test /me without token"""
+    print("\n🔍 Testing /users/me without token...")
     try:
         response = requests.get(f"{BASE_URL}/api/users/me")
-        print(f"✅ Status attendu (401): {response.status_code}")
+        print(f"✅ Expected status (401): {response.status_code}")
         return response.status_code == 401
     except Exception as e:
-        print(f"❌ Erreur: {e}")
+        print(f"❌ Error: {e}")
         return False
 
 
 def test_with_real_token(token):
-    """Test avec un vrai token Firebase"""
-    print(f"\n🔍 Test avec un vrai token Firebase...")
+    """Test with a real Firebase token"""
+    print(f"\n🔍 Testing with a real Firebase token...")
     headers = {"Authorization": f"Bearer {token}"}
 
     try:
@@ -112,12 +113,12 @@ def test_with_real_token(token):
 
         return response.status_code == 200
     except Exception as e:
-        print(f"❌ Erreur: {e}")
+        print(f"❌ Error: {e}")
         return False
 
 
 def main():
-    print("🚀 Test de l'authentification Firebase Backend")
+    print("🚀 Firebase Authentication Backend Test")
     print("=" * 50)
 
     # Basic tests
@@ -125,22 +126,22 @@ def main():
     token_invalid_ok = test_verify_token_invalid()
     me_no_token_ok = test_me_endpoint_no_token()
 
-    print(f"\n📊 Résultats des tests de base:")
+    print(f"\n📊 Basic test results:")
     print(f"   Health endpoint: {'✅' if health_ok else '❌'}")
-    print(f"   Token invalide: {'✅' if token_invalid_ok else '❌'}")
-    print(f"   /me sans token: {'✅' if me_no_token_ok else '❌'}")
+    print(f"   Invalid token: {'✅' if token_invalid_ok else '❌'}")
+    print(f"   /me without token: {'✅' if me_no_token_ok else '❌'}")
 
     # Test with a real token (if provided)
-    print(f"\n🔑 Pour tester avec un vrai token Firebase:")
-    print(f"   1. Connectez-vous via l'app Flutter")
-    print(f"   2. Récupérez l'idToken depuis Firebase Auth")
-    print(f"   3. Lancez: python test_auth.py YOUR_TOKEN_HERE")
+    print(f"\n🔑 To test with a real Firebase token:")
+    print(f"   1. Log in via the Flutter app")
+    print(f"   2. Retrieve the idToken from Firebase Auth")
+    print(f"   3. Run: python test_auth.py YOUR_TOKEN_HERE")
 
     import sys
     if len(sys.argv) > 1:
         token = sys.argv[1]
         real_token_ok = test_with_real_token(token)
-        print(f"   Token réel: {'✅' if real_token_ok else '❌'}")
+        print(f"   Real token: {'✅' if real_token_ok else '❌'}")
 
 
 if __name__ == "__main__":
