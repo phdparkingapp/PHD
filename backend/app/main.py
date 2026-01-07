@@ -1,3 +1,7 @@
+"""
+Main FastAPI application entry point.
+Configures the FastAPI app with CORS middleware, database initialization, and API routes.
+"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 

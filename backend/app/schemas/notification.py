@@ -1,3 +1,7 @@
+"""
+Notification Pydantic schemas for request/response validation.
+Defines notification data models for API input and output.
+"""
 from __future__ import annotations
 
 from datetime import datetime

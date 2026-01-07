@@ -1,3 +1,7 @@
+"""
+Booking and payment Pydantic schemas for request/response validation.
+Defines booking and payment data models for API input and output.
+"""
 from __future__ import annotations
 
 from datetime import datetime

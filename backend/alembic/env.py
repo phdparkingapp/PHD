@@ -1,3 +1,7 @@
+"""
+Alembic environment configuration for database migrations.
+Configures database connection and migration execution.
+"""
 from app.db.base import Base
 from app.core.config import get_settings
 import sys

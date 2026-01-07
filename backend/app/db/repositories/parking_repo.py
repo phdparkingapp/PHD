@@ -1,3 +1,7 @@
+"""
+Parking space repository for database operations.
+Handles parking space CRUD, availability management, and geographic search functionality.
+"""
 from sqlalchemy.orm import Session
 from sqlalchemy import select, delete, exists, and_, func
 from typing import List, Tuple

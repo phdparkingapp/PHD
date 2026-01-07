@@ -1,3 +1,7 @@
+"""
+Parking space management routes.
+Handles CRUD operations for parking spaces, availability management, photo uploads, and parking search.
+"""
 from fastapi import APIRouter, Header, Depends, HTTPException, UploadFile, File, Query
 from sqlalchemy.orm import Session
 from typing import List

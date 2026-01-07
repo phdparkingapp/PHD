@@ -1,3 +1,7 @@
+"""
+User management routes.
+Handles user profile retrieval and updates for authenticated users.
+"""
 from fastapi import APIRouter, Header, Depends
 from sqlalchemy.orm import Session
 

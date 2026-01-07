@@ -1,3 +1,7 @@
+"""
+Pydantic schemas package exports.
+Exports all Pydantic schemas for API request/response validation.
+"""
 from .user import UserOut, UserUpdate, AdminUserUpdate, AdminUserListOut
 from .parking import (
     ParkingSpaceCreate,

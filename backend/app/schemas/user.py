@@ -1,3 +1,7 @@
+"""
+User Pydantic schemas for request/response validation.
+Defines user data models for API input and output.
+"""
 from pydantic import BaseModel
 from datetime import datetime
 

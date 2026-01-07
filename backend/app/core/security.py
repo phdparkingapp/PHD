@@ -1,5 +1,7 @@
-# Placeholder for future role/scopes utilities
-
+"""
+Security utilities for role-based access control.
+Handles role verification and permission checks.
+"""
 from fastapi import HTTPException, status
 
 

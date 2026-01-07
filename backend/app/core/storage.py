@@ -1,3 +1,7 @@
+"""
+AWS S3 storage utilities.
+Handles file uploads to S3 for parking space photos.
+"""
 import os
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError

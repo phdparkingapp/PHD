@@ -1,3 +1,7 @@
+"""
+Database session management.
+Creates database engine and provides session dependency for FastAPI routes.
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 

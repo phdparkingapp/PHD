@@ -1,3 +1,7 @@
+"""
+API router aggregation module.
+Combines all API route modules into a single router.
+"""
 from fastapi import APIRouter
 
 from app.api.routes_auth import router as auth_router

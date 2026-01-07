@@ -1,3 +1,7 @@
+"""
+Booking and payment repository for database operations.
+Handles booking creation, availability checks, payment processing, and booking management.
+"""
 from __future__ import annotations
 
 from datetime import datetime

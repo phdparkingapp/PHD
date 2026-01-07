@@ -1,3 +1,7 @@
+"""
+Issue report database model.
+Represents user-submitted issue reports related to bookings or parking spaces.
+"""
 from __future__ import annotations
 
 from datetime import datetime, timezone

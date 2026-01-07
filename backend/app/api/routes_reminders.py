@@ -1,3 +1,7 @@
+"""
+Reminder management routes.
+Handles scheduling and processing of booking reminders, including periodic end reminders.
+"""
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException, Header

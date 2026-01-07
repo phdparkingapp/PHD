@@ -1,3 +1,7 @@
+"""
+Active reminder repository for database operations.
+Handles active reminder creation, retrieval, updates, and cleanup for periodic booking reminders.
+"""
 from __future__ import annotations
 
 from datetime import datetime, timedelta

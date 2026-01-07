@@ -1,3 +1,8 @@
+"""
+Admin routes for system management.
+Handles user management, parking listing moderation, and issue report administration.
+Requires admin role for all endpoints.
+"""
 from fastapi import APIRouter, Depends, Header, HTTPException
 from sqlalchemy.orm import Session
 
