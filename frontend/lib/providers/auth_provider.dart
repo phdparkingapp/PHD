@@ -18,13 +18,19 @@ class AuthProvider extends ChangeNotifier {
   Future<void> _onAuthChanged(User? u) async {
     firebaseUser = u;
     if (u != null) {
-      // calls backend to synchronise/retrieve profile
+      // Get Firebase ID token and set it in ApiService
       try {
-        final data = await ApiService.verifyToken();
+        final token = await u.getIdToken();
+        if (token != null) {
+          ApiService.setToken(token);
+        }
+        
+        // Call backend login to sync/retrieve profile
+        final data = await ApiService.login();
         appUser = AppUser.fromJson(data);
       } catch (e) {
         appUser = null;
-        debugPrint("verifyToken error: $e");
+        debugPrint("Backend login error: $e");
       }
     } else {
       appUser = null;
@@ -40,7 +46,11 @@ class AuthProvider extends ChangeNotifier {
   // helper to force refresh token + backend sync
   Future<void> refreshBackendProfile() async {
     if (firebaseUser == null) return;
-    final data = await ApiService.verifyToken();
+    final token = await firebaseUser!.getIdToken();
+    if (token != null) {
+      ApiService.setToken(token);
+    }
+    final data = await ApiService.login();
     appUser = AppUser.fromJson(data);
     notifyListeners();
   }
