@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 class ApiService {
   static final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: "http://localhost:8000/api", // ⚠️ to change if backend deployed
+      // Use 10.0.2.2 for Android Emulator, localhost for iOS/Web
+      baseUrl: "http://10.0.2.2:8000/api",
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       headers: {"Content-Type": "application/json"},
@@ -24,6 +25,11 @@ class ApiService {
     return res.data;
   }
 
+  static Future<Map<String, dynamic>> login() async {
+    final res = await _dio.post("/auth/login");
+    return res.data;
+  }
+
   static Future<Map<String, dynamic>> getProfile() async {
     final res = await _dio.get("/auth/me");
     return res.data;
@@ -41,7 +47,8 @@ class ApiService {
     return res.data;
   }
 
-  static Future<Map<String, dynamic>> updateUser(Map<String, dynamic> data) async {
+  static Future<Map<String, dynamic>> updateUser(
+      Map<String, dynamic> data) async {
     final res = await _dio.put("/users/me", data: data);
     return res.data;
   }
@@ -52,7 +59,8 @@ class ApiService {
     return res.data;
   }
 
-  static Future<Map<String, dynamic>> createParking(Map<String, dynamic> data) async {
+  static Future<Map<String, dynamic>> createParking(
+      Map<String, dynamic> data) async {
     final res = await _dio.post("/parkings", data: data);
     return res.data;
   }
@@ -68,12 +76,14 @@ class ApiService {
     return res.data;
   }
 
-  static Future<Map<String, dynamic>> createReservation(Map<String, dynamic> data) async {
+  static Future<Map<String, dynamic>> createReservation(
+      Map<String, dynamic> data) async {
     final res = await _dio.post("/reservations", data: data);
     return res.data;
   }
 
-  static Future<Map<String, dynamic>> updateReservationStatus(String id, String status) async {
+  static Future<Map<String, dynamic>> updateReservationStatus(
+      String id, String status) async {
     final res = await _dio.put("/reservations/$id", data: {"status": status});
     return res.data;
   }
