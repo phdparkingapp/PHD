@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../home/home_screen.dart';
 import 'register_screen.dart';
-import '../../services/api_service.dart';
+import '../../services/auth_service.dart';
 import '../../utils/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,28 +15,24 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _passwordCtrl = TextEditingController();
   bool _loading = false;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final AuthService _authService = AuthService();
 
   Future<void> _login() async {
     setState(() => _loading = true);
     try {
-      UserCredential userCred = await _auth.signInWithEmailAndPassword(
-        email: _emailCtrl.text.trim(),
-        password: _passwordCtrl.text.trim(),
+      await _authService.signIn(
+        _emailCtrl.text.trim(),
+        _passwordCtrl.text.trim(),
       );
-
-      // Retrieve the Firebase token and pass it to the API
-      String token = (await userCred.user!.getIdToken())!;
-      ApiService.setToken(token);
 
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const HomeScreen()),
       );
-    } on FirebaseAuthException catch (e) {
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message ?? "Login failed")),
+        SnackBar(content: Text(e.toString())),
       );
     } finally {
       if (mounted) setState(() => _loading = false);

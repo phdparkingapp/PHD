@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../services/api_service.dart';
+import '../../services/auth_service.dart';
+import '../auth/login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -13,6 +15,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   bool _loading = false;
   Map<String, dynamic>? _profile;
+  final AuthService _authService = AuthService();
 
   @override
   void initState() {
@@ -29,6 +32,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
       debugPrint("getProfile error: $e");
     } finally {
       setState(() => _loading = false);
+    }
+  }
+
+  Future<void> _logout() async {
+    setState(() => _loading = true);
+    try {
+      await _authService.signOut();
+      if (!mounted) return;
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+        (route) => false,
+      );
+    } catch (e) {
+      debugPrint("Logout error: $e");
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Erreur lors de la déconnexion: $e")),
+      );
+    } finally {
+      if (mounted) setState(() => _loading = false);
     }
   }
 
@@ -49,6 +73,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Text("Nom: ${_profile?['display_name'] ?? auth.firebaseUser?.displayName ?? ''}"),
                 const SizedBox(height: 6),
                 Text("Rôle: ${_profile?['role'] ?? 'user'}"),
+                const SizedBox(height: 24),
+                ElevatedButton.icon(
+                  onPressed: _logout,
+                  icon: const Icon(Icons.logout),
+                  label: const Text("Se déconnecter"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                  ),
+                ),
               ]),
             ),
     );

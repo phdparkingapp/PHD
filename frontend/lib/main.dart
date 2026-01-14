@@ -3,9 +3,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'screens/splash/splash_screen.dart';
 import 'utils/constants.dart';
 
+import 'firebase_options.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Firebase initialisation
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    print("Firebase init failed: $e");
+    // Continue running app even if Firebase fails
+  }
   runApp(const HeirsPrivParkApp());
 }
 
