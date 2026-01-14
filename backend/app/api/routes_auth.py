@@ -34,6 +34,28 @@ def verify_token(Authorization: str | None = Header(default=None), db: Session =
     )
 
 
+@router.post("/login", response_model=UserOut)
+def login(Authorization: str | None = Header(default=None), db: Session = Depends(get_db)):
+    """User login - verifies Firebase token and returns user information"""
+    user, _ = verify_bearer_token_and_get_user(
+        authorization=Authorization, db=db)
+    return user
+
+
+class LogoutResponse(BaseModel):
+    message: str
+    note: str
+
+
+@router.post("/logout", response_model=LogoutResponse)
+def logout():
+    """User logout - symbolic, actual logout happens on client side"""
+    return LogoutResponse(
+        message="Logout réussi",
+        note="Veuillez vous déconnecter depuis l'application mobile"
+    )
+
+
 @router.get("/me", response_model=UserOut)
 def get_current_user(Authorization: str | None = Header(default=None), db: Session = Depends(get_db)):
     """Retrieve the connected (logged-in) user's information"""
