@@ -20,7 +20,16 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _checkAuth() async {
     await Future.delayed(const Duration(seconds: 2));
-    User? user = FirebaseAuth.instance.currentUser;
+    User? user;
+    try {
+      user = FirebaseAuth.instance.currentUser;
+    } catch (e) {
+      print("Auth check failed: $e");
+      // Treat as not logged in
+    }
+
+    if (!mounted) return;
+
     if (user == null) {
       Navigator.pushReplacement(
         context,
