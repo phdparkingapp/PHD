@@ -52,10 +52,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAWNXKeCvJwdDOzAth0Z6hYwidv_5N02Kw',
-    appId: '1:260154244797:android:d049a3051a384390d2c1d4',
-    messagingSenderId: '260154244797',
-    projectId: 'heirs-privpark',
-    storageBucket: 'heirs-privpark.firebasestorage.app',
+    apiKey: 'AIzaSyAuBDMkIHuXouB_u614dFX0mFgrbt25F4E',
+    appId: '1:788141115039:android:6bea32c64fb77e231ec4aa',
+    messagingSenderId: '788141115039',
+    projectId: 'heirsprivpark',
+    storageBucket: 'heirsprivpark.firebasestorage.app',
   );
 }
